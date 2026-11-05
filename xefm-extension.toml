@@ -1,0 +1,11 @@
+[extension]
+id = "sqlite-archive"
+version = "0.1.0"
+api_version = 1
+name = "SQLite Archive"
+description = "Browse SQLite databases read-only as virtual folders."
+min_xefm = "1.10.0"
+updates = "github:SinisterSoftware/xefm-sqlite-archive"
+
+[contributes.path_schemes]
+sqlite = "sqlite_archive.logic:SQLITE_SCHEME"
