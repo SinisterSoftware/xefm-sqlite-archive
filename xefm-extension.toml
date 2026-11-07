@@ -4,8 +4,14 @@ version = "0.1.1"
 api_version = 1
 name = "SQLite Archive"
 description = "Browse SQLite databases read-only as virtual folders."
-min_xefm = "1.10.0"
+min_xefm = "1.13.0"
 updates = "github:SinisterSoftware/xefm-sqlite-archive"
 
 [contributes.path_schemes]
 sqlite = "sqlite_archive.logic:SQLITE_SCHEME"
+
+[contributes.actions]
+"sqlite_archive.open" = { entry = "sqlite_archive.logic:open_action", description = "Open a SQLite database read-only" }
+
+[contributes.event_hooks]
+file_open = "sqlite_archive.logic:on_file_open"

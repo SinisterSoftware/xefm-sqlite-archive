@@ -1,1 +1,1 @@
-from .logic import SqlitePathImpl, open_sqlite
+from .logic import SqlitePathImpl
