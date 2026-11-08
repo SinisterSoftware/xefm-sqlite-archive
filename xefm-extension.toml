@@ -1,6 +1,6 @@
 [extension]
 id = "sqlite-archive"
-version = "0.1.2"
+version = "0.1.5"
 api_version = 1
 name = "SQLite Archive"
 description = "Browse SQLite databases read-only as virtual folders."
@@ -12,6 +12,3 @@ sqlite = "sqlite_archive.logic:SQLITE_SCHEME"
 
 [contributes.actions]
 "sqlite_archive.open" = { entry = "sqlite_archive.logic:open_action", description = "Open a SQLite database read-only" }
-
-[contributes.event_hooks]
-file_open = "sqlite_archive.logic:on_file_open"
