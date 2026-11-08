@@ -69,6 +69,12 @@ class SqlitePathImpl(ReadOnlyPathImpl):
         database = quote(self._database.as_posix(), safe="/:")
         return f"{self.SCHEME}://{database}#"
 
+    @property
+    def parent(self):
+        if self.key:
+            return self.at("/".join(self._segments[:-1]))
+        return self._database.parent
+
     def _files(self):
         try:
             info = self._database.stat()

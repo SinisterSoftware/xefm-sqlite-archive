@@ -118,6 +118,16 @@ class SqliteArchiveTests(unittest.TestCase):
         self.assertTrue(root.is_dir())
         self.assertTrue(root.root_prefix().endswith("archive%20%231.sqlite#"))
 
+    def test_parent_navigation_returns_to_database_directory_at_archive_root(self):
+        database = self.directory / "archive.sqlite"
+        _database(database)
+        root = SqlitePathImpl(_uri(database))
+        child = next(root.iterdir())
+
+        self.assertEqual(str(child.parent), str(root))
+        self.assertEqual(str(root.parent), str(self.directory))
+        self.assertEqual(str(root.parent.parent), str(self.directory.parent))
+
 
 if __name__ == "__main__":
     unittest.main()
