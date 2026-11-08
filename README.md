@@ -6,11 +6,17 @@ XeFM extension to browse SQLite databases read-only as virtual folders.
 
 Install with `xefm ext install github:SinisterSoftware/xefm-sqlite-archive`.
 
-After installation, press **Enter** on a SQLite database to browse it. The
-extension checks the file's SQLite header, so non-SQLite `.db` files keep
-XeFM's normal open behavior. Each database opens as a virtual folder containing
+With an extension such as External Viewers configured to invoke
+`sqlite_archive.open`, press **Enter** on a SQLite database to browse it. The
+action checks the file's SQLite header, so non-SQLite `.db` files keep XeFM's
+normal open behavior. Each database opens as a virtual folder containing
 `schema.sql` and one CSV file per table or view. CSV exports contain at most
 2,000 rows, and database and virtual-folder paths are read-only.
+
+SQLite Archive provides the action and `sqlite://` path scheme, but does not
+register its own `file_open` hook. This allows another extension's
+`file_open` hook, such as External Viewers, to route declined SQLite files to
+the action without a hook conflict.
 
 The virtual folder can also be opened directly with its `sqlite://` URI. For
 example:
