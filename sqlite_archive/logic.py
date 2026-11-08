@@ -73,7 +73,8 @@ class SqlitePathImpl(ReadOnlyPathImpl):
     def parent(self):
         if self.key:
             return self.at("/".join(self._segments[:-1]))
-        return self._database.parent
+        # Keep the parent in XeFM's Path wrapper, not pathlib's local Path.
+        return type(self.at(""))(self._database.parent)
 
     def _files(self):
         try:

@@ -125,8 +125,14 @@ class SqliteArchiveTests(unittest.TestCase):
         child = next(root.iterdir())
 
         self.assertEqual(str(child.parent), str(root))
-        self.assertEqual(str(root.parent), str(self.directory))
-        self.assertEqual(str(root.parent.parent), str(self.directory.parent))
+        local_parent = root.parent
+        self.assertEqual(str(local_parent), str(self.directory))
+        self.assertFalse(local_parent.is_remote())
+        self.assertTrue(local_parent.is_dir())
+
+        parent = local_parent.parent
+        self.assertEqual(str(parent), str(self.directory.parent))
+        self.assertFalse(parent.is_remote())
 
 
 if __name__ == "__main__":
