@@ -1,5 +1,7 @@
 # SQLite Archive
 
+[日本語版 README](README.ja.md)
+
 XeFM extension to browse SQLite databases read-only as virtual folders.
 
 Install with `xefm ext install github:SinisterSoftware/xefm-sqlite-archive`.
